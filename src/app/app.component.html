@@ -10,7 +10,7 @@
     <div class="container-box uk-width-1-1">
 
       <!-- Add button -->
-      <button class="add-button uk-button uk-width-1-1">
+      <button class="add-button uk-button uk-width-1-1" (click)="onclick($event)">
         <i class="uk-icon-plus"></i>
       </button>
       
@@ -26,9 +26,9 @@
         <div class="list-empty uk-width-1-1" *ngIf="items?.length === 0">
           List is empty
         </div>
-        <div class="list-items uk-width-1-1">
-          <div class="item uk-width-1-1" *ngFor="let item of items; let i = index;">
-            Item {{ i }}
+        <div (window:scroll)="onscroll($event)" class="list-items uk-width-1-1">
+          <div class="item uk-width-1-1" *ngFor="let item of items | slice:0:this.pos; let i = index;">
+            {{ item }}
           </div>
         </div>
       </div> 
